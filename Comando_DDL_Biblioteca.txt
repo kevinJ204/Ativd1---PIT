@@ -1,0 +1,47 @@
+create database biblioteca;
+
+use biblioteca;
+
+-- Criação da tabela `alunos`
+CREATE TABLE `alunos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `ra` INT NOT NULL,
+  `telefone` BIGINT NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Criação da tabela `usuarios`
+CREATE TABLE `usuarios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(200) NOT NULL,
+  `email` VARCHAR(200) NOT NULL,
+  `senha` VARCHAR(200) NOT NULL,
+  `nivel` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Criação da tabela `autores`
+CREATE TABLE `autores` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Criação da tabela `generos`
+CREATE TABLE `generos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `genero` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Criação da tabela `titulos`
+CREATE TABLE `titulos` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(200) NOT NULL,
+  `genero_id` INT NOT NULL,
+  `assunto` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `fk_genero` FOREIGN KEY (`genero_id`) REFERENCES `generos`(`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
